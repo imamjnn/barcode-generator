@@ -16,6 +16,7 @@ const BarcodeComponent = forwardRef(({ data }: Props, ref) => {
   }, [data]);
 
   return (
+    // @ts-ignore
     <div ref={ref}>
       <div className="grid gap-x-[10px] grid-cols-2 w-auto, pt-[6px]">
         {data?.map((item, index) => {

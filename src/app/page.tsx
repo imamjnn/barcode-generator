@@ -35,6 +35,7 @@ export default function Home() {
         });
         let result = {};
         for (let i = 0; i < arr.length; i++) {
+          //@ts-ignore
           result[arr[i].key] = arr[i].value;
         }
         console.log(result);
