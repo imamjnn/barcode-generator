@@ -26,19 +26,22 @@ export default function Home() {
 
   const loadProduct = async () => {
     const response = await fetchProducts(1, 8, search);
-    console.log(response);
     if (response) {
       if (response.status !== 0) {
         setProducts(response.data);
         const arr = response.data.map((a) => {
-          return { key: a.product_code, value: a.prices[0].price };
+          console.log(a);
+          return {
+            key: a.product_code,
+            value: a.prices.filter((b) => b.type === "retail_price")[0].price,
+          };
         });
         let result = {};
         for (let i = 0; i < arr.length; i++) {
           //@ts-ignore
           result[arr[i].key] = arr[i].value;
         }
-        console.log(result);
+        console.log("result", result, arr);
         setPriceSelected(result);
       }
     }
@@ -59,7 +62,7 @@ export default function Home() {
 
   return (
     <div className="bg-white p-10">
-      <div className="hidden">
+      <div>
         <BarcodeComponent ref={componentRef} data={productSelected} />
       </div>
       <div className="pb-8">
@@ -67,7 +70,7 @@ export default function Home() {
           type="text"
           placeholder="cari nama atau kode produk"
           onChange={(e) => setSearch(e.target.value)}
-          className="w-[200px]"
+          className="input input-bordered w-full max-w-xs"
         />
       </div>
       {products.map((item) => (
@@ -143,10 +146,7 @@ export default function Home() {
       ))}
 
       <div className="absolute right-4 bottom-4">
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onClick={handlePrint}
-        >
+        <button className="btn" onClick={handlePrint}>
           Print
         </button>
       </div>
