@@ -8,7 +8,7 @@ export const fetchProducts = async (
 ) => {
   try {
     const response = await axios.get<ProductListResponse>(
-      `http://103.166.156.240:2024/product/barcode?search=${search}&page=${offset}&limit=${limit}&orderBy=created`
+      `http://localhost:2024/product/barcode?search=${search}&page=${offset}&limit=${limit}&orderBy=created`
     );
     if (response.status === 200) {
       return response.data;
