@@ -42,3 +42,15 @@ export type ProductSelectedParams = {
   price: number;
   product_code: number;
 };
+
+export type ItemSelectedParams = {
+  name: string;
+  prices: ProductPrices[];
+  product_code: number;
+};
+
+export type ProductPrintsParams = {
+  name: string;
+  price: number;
+  product_code: number;
+};
