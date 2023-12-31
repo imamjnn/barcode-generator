@@ -30,7 +30,7 @@ const BarcodeComponent = forwardRef(({ data }: Props, ref) => {
               className={classNames(
                 "grid justify-center items-center",
                 data.map((b, i) => i * 2).find((a) => a === index + 1)
-                  ? "ml-[18px]"
+                  ? "ml-[6px]"
                   : "mr-[-0.1px]"
               )}
             >
