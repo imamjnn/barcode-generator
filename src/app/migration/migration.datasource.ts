@@ -21,3 +21,25 @@ export const fetchOnlineProduct = async (
     return null;
   }
 };
+
+export const createProduct = async (data: any) => {
+  try {
+    const response = await axios.post(
+      `http://localhost:2024/product/add`,
+      data,
+      {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwMjcyNTU5Mn0.p8Qtz7XpBYj4schYeJMkoIC3d8YqhcaK_-WiyAhV8kI",
+        },
+      }
+    );
+    if (response.status === 200) {
+      return response.data;
+    }
+    return null;
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+};
