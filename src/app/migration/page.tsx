@@ -21,6 +21,7 @@ export default function Migration() {
 
   const onSave = () => {
     Promise.all(
+      // @ts-ignore
       data?.data.map(async (item) => {
         const nPrice = item.prices.filter((a) => a.type === "normal_price")[0];
         const rPrice = item.prices.filter((a) => a.type === "retail_price")[0];
